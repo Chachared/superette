@@ -1,0 +1,87 @@
+1/ création du modèle Product --> créer un dossier models avec un fichier Product.ts dedans
+2/ création du service ProductService --> aller modifier dans le fichier **product.service.ts** --> créer un tableau de produits --> bien penser à ajouter l*'import de Product* (modèle)
+3/ ajouter ProductService dans les providers de **app.module.ts** --> bien penser à ajouter l*'import de ProductService* (service)
+4/ création d'un composant tableau --> injecter dans le fichier app.component.html
+5/ créer un tableau HTML dans **products-table.component.html** (avec bootstrap par exemple)
+6/  a/ afficher les produits --> dans **products-table-component.ts** créer un tableau + importer le service dans le constructeur --> bien penser à *importer Product (modèle) et ProductService (service)*
+    b/ dans **products-table.component.html** --> *ngFor + création du bouton (mettre en stock/rupture)
+7/créer les fonctions permettant de modifier le statut du produit au clic --> dans **products.table.component.ts**(onClickBtnStatus()) et dans **product.services.ts**(updateStatus())
+8/ créer les boutons pour modifier tous les statuts en un click --> **products-table.component.html** (avec bootstrap par exemple)
+9/créer les fonctions permettant de modifier le statut de tous les produits au clic --> dans **products.table.component.ts**(onClickBtnAllStatus()) et dans **product.services.ts**(updateAllStatus())
+10) création d'un dossier view pour recueillir le dossier "product-table" et le dossier "auth" --> git : *$ng g c views/auth*
+11) création du formulaire dans **views/auth/auth.component.html**
+12)créer une fonction pour l'authentification au click --> dans **views/auth/auth.component.ts**, puis sur le bouton dans** views/auth/auth.component.html**
+13)créer le service d'authentification --> git: *$ng g s services/auth/auth*
+14)déclarer le service dans les providers de app.module.ts
+15) dans le service d'authentification --> créer la fonction signIn() (ou tout autre nom qu'on souhaite) --> **service/auth/auth.service.ts** attention à ne pas oublier de déclarer le token
+16)déclarer le service  dans **auth/auth.component.ts** + la fonction signIn, ne pas oublier de le déclarer dans le constructeur du composant (les parenthèses du constructeur du composant n'acceptent que des services)
+17)création d'un dossier guard --> git: *$ng g g guards/auth*
+18) routes : dans *app.routing.modules.ts* déclarer le chemin 'auth' et le composant AuthComponent dans la constante routes. Ne pas oublier l'import. Répéter l'opération pour déclarer le composant ProductsTableComponent
+19)supprimer les balises app-component --> **app.component.html**
+19)créer le dossier error pour la page d'erreur --> git: *$ng g c views/error*
+20)créer la page d'erreur sur **views/error/error.component.html**
+21)déclarer le service AuthService dans le constructeur du guard, ainsi que le Router  + modifier la fonction canActivate--> **guards/auth/auth.guard.ts**
+22)déclarer le guard dans le router --> **app-routing.module.ts** l'ajouter au chemin d'authentification
+23)créer un composant singleProduct --> git: *$ng g c single-product* (pour pouvoir afficher le détail d'un seul produit)
+24) rajouter la route dans **app-routing.module.ts**
+25) ajouter le bouton dans le tableau **products-table.component.html**
+26) ajouter au constructeur le ProductService et la route en cours (ActivatedRoute) et créer la fonction qui permet de récupérer l'id du produit et l'afficher sur la page singleProduct, ne pas oublier de déclarer product --> **single-product.component.ts**
+27) créer la fonction getProductById -->**services/product/product.service.ts**
+29) On rend la variable observable en la typant en BehaviorSubject (modifier le token) + on rajoute le else dans la condition pour afficher le message d'erreur --> services/auth/auth.service.ts
+30)rajouter le header (qu'on avait oublié de faire au début, paaaaas bien) --> git: ng g c components/header + récupérer le titre (header) dans app.component.html et le déplacer dans header.component.html
+31)créer le bouton "se déconnecter" dans le header, *ngIf="isConnected" --> header.component.html  + déclarer isConnected dans header.component.ts
+32)importer le service dans header.component.ts
+33)on crée un observateur pour observer l'observable (tokenSub) --> header.component.ts
+34)on demande à l'observateur d'observer le token --> header.component.ts
+35)on arrête d'observer avec le ngOnDestroy() --> header.component.ts
+36)ajouter le getValue() -->auth.guards.html
+37)importer "FormsModule" dans lapp.module.ts + modifier le formulaire (attention bien passer le bouton en submit, enlever le (click) et le remplacer en haut du formulaire par le ngSubmit -->auth.component.html
+38)ne pas oublier de déclarer les variables de ngModel (email et password) -->auth.component.ts
+39)renseigner la méthode catch ds la fonction onSubmitAuthForm pour afficher un message d'erreur lorsque les identifiants sont incorrects --> auth.component.ts
+40)créer le message d'erreur dans une div dans auth.component.html
+41)déclarer errMsg et l'intégrer ds le catch de la fonction onSubmitAuthForm --> auth.component.ts
+42)faire le signOut dans auth.service.ts
+43)ajouter un evenement au click dans le button dans header.component.html (ex onClickSignOut())
+44)créer la méthode onClickSignOut dans header.component.ts. Ne pas oublier de déclarer dans le constructeur (routeur)
+45)créer la vue new-product --> git: $ng g c views/new-product
+46)créer la vue edit-product --> git: $ng g c views/edit-product
+47/créer ReacticeFormsModule dans les imports --> app.module.ts
+48/créer le composant product-form --> git: $ng g c components/product-form
+49/ajouter le formBuilder dans product-form.component.ts et méthode initForm(). Ne pas oublier de déclarer productForm et d'initialiser la méthode dans ngOnInit
+50/créer le formulaire --> components/product-form/product-form.component.html. Ne pas oublier de déclarer product dans --> product-form.component.ts
+51/créer la méthode de soumission dans --> product-form.component.ts + créer l'input du bouton
+52/modifier le chemin pour product/new dans --> app-routing.module.ts
+53/déplacer le *ngIf dans une div (la sortir du bouton). Créer le bouton d'ajout, bien penser au [routerLink] et à supprimer la position absolue --> dans header.component.html
+54/creer le bouton dans <app-product-form> --> dans new-product.component.html
+55/creer une carte avec un bouton retour --> dans new-product.component.html
+56/faire un output de type event emitter--> product-form.component.ts  ATTENTION bien importer l'EventEmitter depuis angularcore
+57/declarer l'eventEmitter dans le constructeur + fonction d'ajout --> product-form.component.ts
+58/rajouter l'event formSubmitted dans new-product.component.html
+59/créer la méthode onSubmitNewProduct-->dans new-product.component.ts +ajouter le productService au constructeur
+60/créer la fonction addProduct dans product.service.ts
+61/Répéter l'opération pour l'édition du livre
+62/Editer la route pour l'édition du livre -->app-routing.module.ts
+63/on récupère l'id et donc le produit, pour l'instancier dans le produit --> ds le ngOnInit -->edit-product.component.ts
+64/afficher les données dans le formulaire --> [productToEdit] --> edit-product.component.html
+65/modifier l'initialisation pour que l'edition "ecrase" le livre modifié et n'en crée pas un nouveau : faire une condition ds ngOnInit --> product-form.component.ts
+66/créer le bouton éditer !!!!! --> products-table.component.html
+67/créer la méthode editProduct --> product.service.ts
+68/Répéter l'opération pour la suppression du livre
+69/créer le bouton avec une fonction onclick --> products-table.component.html
+70/écrire la méthode onCLickBtnDelete --> products-table.component.ts
+71/ecrire la méthode deleteProduct -->product.service.ts
+72/BONUS : gérer la suppression du tableau complet et l'ajout d'un nouveau produit : modifier la méthode addProduct dans product.service.ts avec une condition si le tableau est vide
+73/BONUS ajouter le bouton suppression pour le single-product --> single-product.component.ts + html
+
+
+
+
+
+
+
+
+
+
+
+
+

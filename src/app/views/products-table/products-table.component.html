@@ -1,0 +1,61 @@
+<div class="container my-3">
+  <div class="d-flex justify-content-center my-3">
+    <button
+      (click)="onClickUpdateAllStatus(true)"
+      type="button"
+      class="btn btn-sm btn-outline-success mx-2"
+    >
+      Tous en stock
+    </button>
+    <button
+      (click)="onClickUpdateAllStatus(false)"
+      type="button"
+      class="btn btn-sm btn-outline-danger mx-2"
+    >
+      Tous en rupture
+    </button>
+  </div>
+  <table class="table table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Stocks</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products; index as i">
+        <th scope="row">{{ product.id }}</th>
+        <td>{{ product.name }}</td>
+        <td>{{ product.status ? "En stock" : "En rupture de stock" }}</td>
+        <td>
+          <button
+            (click)="onClickBtnStatus(i)"
+            type="button"
+            class="btn btn-info"
+          >
+            {{ product.status ? "Déclarer une rupture" : "Mettre en stock" }}
+          </button>
+          <button
+            [routerLink]="['/product', product.id]"
+            class="btn btn-outline-primary mx-2"
+          >
+            Voir le détail
+          </button>
+          <button
+            [routerLink]="['/product', 'edit', product.id]"
+            class="btn btn-outline-warning mx-2"
+          >
+            Editer
+          </button>
+          <button
+            (click)="onClickBtnDelete(i)"
+            class="btn btn-outline-warning mx-2"
+          >
+            Supprimer
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

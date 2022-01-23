@@ -1,0 +1,10 @@
+<div class="row col-6 card shadow mx-auto">
+  <div class="card-body text-center">
+    <h5 class="card-title">{{ product.name }}</h5>
+    <img src="https://picsum.photos/200/200" class="card-img-top" />
+    <button (click)="onClickBtnDelete()" class="btn btn-outline-warning mx-2">
+      Supprimer
+    </button>
+    <button routerLink="/products" class="btn btn-dark mt-2">RETOUR</button>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<div *ngIf="product" class="row col-6 card shadow mx-auto">
+  <div class="card-body text-center">
+    <h5 class="card-title">MODIFIER PRODUIT</h5>
+
+    <app-product-form
+      [productToEdit]="product"
+      btnLabel="Modifier"
+      (formSubmitted)="onSubmitEditProduct($event)"
+    ></app-product-form>
+
+    <button routerLink="/products" class="btn btn-success mt-2">Retour</button>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="row col-6 card shadow mx-auto">
+  <div class="card-body text-center">
+    <h5 class="card-title">NOUVEAU PRODUIT</h5>
+
+    <app-product-form
+      btnLabel="Ajouter"
+      (formSubmitted)="onSubmitNewProduct($event)"
+    ></app-product-form>
+
+    <button routerLink="/products" class="btn btn-dark mt-2">Retour</button>
+  </div>
+</div>
